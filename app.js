@@ -43,9 +43,9 @@ app.post('/players/', async (request, response) => {
   INSERT INTO 
       cricket_team(player_name, jersey_number, role)
   values(
-    ${playerName},
+    '${playerName}',
     ${jerseyNumber},
-    ${role}
+    '${role}'
   );`
   const dbResponse = await db.run(addPlayerQuery)
   response.send('Player Added to Team')
@@ -71,9 +71,9 @@ app.put('/players/:playerId/', async (request, response) => {
   update
     cricket_team
   set 
-    player_name:${playerName},
+    player_name:'${playerName}',
     jersey_number: ${jerseyNumber},
-    role: ${role} 
+    role: '${role}'
   where
     player_id = ${playerId} ;`
   await db.run(updatePlayerQuery)
